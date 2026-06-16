@@ -53,7 +53,13 @@ export async function POST(req: NextRequest) {
       message: 'Your appointment request has been received. We will contact you within 24 hours to confirm.',
     });
   } catch (err) {
-    console.error('Appointment booking error:', err);
-    return NextResponse.json({ error: 'Failed to book appointment. Please try again or call us directly.' }, { status: 500 });
-  }
+  console.error('Appointment booking error FULL:', err);
+
+  return NextResponse.json(
+    {
+      error: String(err),
+    },
+    { status: 500 }
+  );
+}
 }
