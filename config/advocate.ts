@@ -61,7 +61,7 @@ export const advocate = {
 
   // ── Contact ──────────────────────────────────────────────────
   phones: ['+91 8074228486', '+91 9573259555'],
-  primaryPhone: '+918074228486',         // for tel: links (no spaces/+)
+  primaryPhone: '918074228486',         // for tel: links (no spaces/+)
   emails: ['rambabuchintaparthi@gmail.com', 'advocaterambabuch@gmail.com'],
   primaryEmail: 'advocaterambabuch@gmail.com',
 
