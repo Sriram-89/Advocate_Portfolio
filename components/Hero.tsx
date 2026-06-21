@@ -99,7 +99,7 @@ export default function Hero() {
                 )}
               </div>
 
-              <div className="absolute -bottom-4 -left-4 bg-gold px-5 py-3 shadow-xl">
+              <div className="absolute bottom-0 left-0 bg-gold px-3 py-2 shadow-xl max-w-full">
                 <div className="text-charcoal text-xs font-semibold tracking-wider uppercase">{advocate.barCouncil}</div>
                 <div className="text-charcoal text-xs opacity-70">Reg. No. {advocate.enrollmentNumber}</div>
               </div>

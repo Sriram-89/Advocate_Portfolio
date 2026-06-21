@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
-import { sendAppointmentNotification } from '@/lib/notify';
 
 function getAdminDb() {
   if (!getApps().length) {
@@ -48,24 +47,19 @@ export async function POST(req: NextRequest) {
 
     const docRef = await db.collection('appointments').add(appointment);
 
-    // Notify advocate — fire-and-forget (never blocks the response, never throws)
-    sendAppointmentNotification({
-      appointmentId: docRef.id,
-      name:          appointment.name,
-      phone:         appointment.phone,
-      email:         appointment.email,
-      preferredDate: appointment.preferredDate,
-      preferredTime: appointment.preferredTime,
-      caseType:      appointment.caseType,
-    }).catch((err) => console.error('[notify] Unhandled notification error:', err));
-
     return NextResponse.json({
       success: true,
       appointmentId: docRef.id,
       message: 'Your appointment request has been received. We will contact you within 24 hours to confirm.',
     });
   } catch (err) {
-    console.error('Appointment booking error:', err);
-    return NextResponse.json({ error: 'Failed to book appointment. Please try again or call us directly.' }, { status: 500 });
-  }
+  console.error('Appointment booking error FULL:', err);
+
+  return NextResponse.json(
+    {
+      error: String(err),
+    },
+    { status: 500 }
+  );
+}
 }
