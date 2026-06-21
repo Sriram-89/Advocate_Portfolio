@@ -194,7 +194,7 @@ export default function AdminLoginPage() {
         <div style={S.divider} />
         <p style={S.note}>
           This portal is for authorised use only.<br />
-          Set <code style={{ color: '#D4AF37' }}>ADMIN_PASSWORD</code> in your environment variables.
+  
         </p>
       </div>
     </div>

@@ -196,12 +196,7 @@ export default function AdminDashboard() {
     setError('');
     try {
       const url = '/api/admin/appointments';
-      const filteredAppointments =
-  statusFilter === 'all'
-    ? appointments
-    : appointments.filter(
-        a => a.status === statusFilter
-      );
+     
       const res = await fetch(url);
       if (res.status === 401) { router.push('/admin/login'); return; }
       if (!res.ok) throw new Error('Failed to fetch');
