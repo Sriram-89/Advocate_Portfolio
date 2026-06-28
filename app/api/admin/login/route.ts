@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
   try {
     const { password } = await req.json();
 
-    const adminPassword = process.env.ADMIN_PASSWORD;
+    const adminPassword = Rambabu@1671;
     if (!adminPassword) {
       console.error('[admin/login] ADMIN_PASSWORD env var is not set');
       return NextResponse.json(
